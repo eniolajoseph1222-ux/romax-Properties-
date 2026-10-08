@@ -6,72 +6,152 @@
 
   <title>Romax Properties | Luxury Real Estate</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+  /* PREMIUM PROPERTY CARDS */
+.properties {
+    padding: 100px 6%;
+    background: #f8f6f1;
+    color: #171717;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-heading span {
+    color: #b89552;
+    font-size: 12px;
+    letter-spacing: 4px;
+    font-weight: bold;
+}
+
+.section-heading h2 {
+    font-size: clamp(30px, 5vw, 48px);
+    margin: 15px 0;
+}
+
+.section-heading p {
+    color: #777;
+    font-size: 15px;
+}
+
+.property-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    max-width: 1250px;
+    margin: auto;
+}
+
+.property-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 35px rgba(0,0,0,.06);
+    transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.property-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(0,0,0,.12);
+}
+
+.property-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.property-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s ease;
+}
+
+.property-card:hover .property-image img {
+    transform: scale(1.06);
+}
+
+.property-tag {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: #d6b36a;
+    color: #171717;
+    padding: 8px 12px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.property-info {
+    padding: 24px;
+}
+
+.property-info h3 {
+    font-size: 19px;
+    margin: 0 0 12px;
+}
+
+.property-info > p {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 22px;
+}
+
+.property-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    color: #666;
+    font-size: 12px;
+}
+
+.property-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding-top: 20px;
+}
+
+.property-bottom strong {
+    font-size: 13px;
+}
+
+.property-bottom a {
+    color: #a7833f;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.property-bottom a:hover {
+    color: #171717;
+}
+
+@media (max-width: 900px) {
+    .property-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .properties {
+        padding: 70px 5%;
     }
 
-    html {
-      scroll-behavior: smooth;
+    .property-grid {
+        grid-template-columns: 1fr;
     }
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #0b0b0b;
-      color: #fff;
+    .property-image {
+        height: 240px;
     }
-
-    /* NAVIGATION */
-
-    nav {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 25px 6%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 10;
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
-
-    .logo span {
-      color: #d6b36a;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 30px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-size: 14px;
-      transition: 0.3s;
-    }
-
-    .nav-links a:hover {
-      color: #d6b36a;
-    }
-
-    .nav-btn {
-      border: 1px solid #d6b36a;
-      padding: 12px 20px;
-      color: #d6b36a;
-      text-decoration: none;
-      font-size: 13px;
-    }
-
+}
     /* HERO */
 
     .hero {
@@ -470,84 +550,80 @@
 
   <!-- PROPERTIES -->
 
-  <section class="section" id="properties">
-
-    <div class="section-title">
-      <small>Featured Collection</small>
-
-      <h2>Discover Exceptional Properties.</h2>
-
-      <p>
-        Explore a selection of modern homes and premium spaces
-        designed for comfortable and sophisticated living.
-      </p>
+  <section id="properties" class="properties">
+    <div class="section-heading">
+        <span>OUR COLLECTION</span>
+        <h2>Featured Properties</h2>
+        <p>Explore premium spaces designed for modern living.</p>
     </div>
 
-    <div class="properties">
+    <div class="property-grid">
 
-      <div class="property">
+        <div class="property-card">
+            <div class="property-image">
+                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80" alt="Luxury modern home">
+                <span class="property-tag">FOR SALE</span>
+            </div>
 
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=85">
-
-        <div class="property-info">
-          <span>Luxury Residence</span>
-          <h3>Modern Villa</h3>
-          <p>Lagos, Nigeria · 4 Bedrooms · 4 Bathrooms</p>
+            <div class="property-info">
+                <h3>Modern Luxury Residence</h3>
+                <p>📍 Lagos, Nigeria</p>
+                <div class="property-details">
+                    <span>🛏 4 Beds</span>
+                    <span>🚿 4 Baths</span>
+                    <span>📐 450 m²</span>
+                </div>
+                <div class="property-bottom">
+                    <strong>Luxury Home</strong>
+                    <a href="#contact">View Details →</a>
+                </div>
+            </div>
         </div>
 
-      </div>
+        <div class="property-card">
+            <div class="property-image">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" alt="Contemporary luxury house">
+                <span class="property-tag">FEATURED</span>
+            </div>
 
-
-      <div class="property">
-
-        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=85">
-
-        <div class="property-info">
-          <span>Premium Home</span>
-          <h3>Contemporary Estate</h3>
-          <p>Lagos, Nigeria · 5 Bedrooms · 5 Bathrooms</p>
+            <div class="property-info">
+                <h3>Contemporary Villa</h3>
+                <p>📍 Chevron, Lagos</p>
+                <div class="property-details">
+                    <span>🛏 5 Beds</span>
+                    <span>🚿 5 Baths</span>
+                    <span>📐 520 m²</span>
+                </div>
+                <div class="property-bottom">
+                    <strong>Premium Villa</strong>
+                    <a href="#contact">View Details →</a>
+                </div>
+            </div>
         </div>
 
-      </div>
+        <div class="property-card">
+            <div class="property-image">
+                <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=80" alt="Elegant luxury interior">
+                <span class="property-tag">NEW</span>
+            </div>
 
-
-      <div class="property">
-
-        <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1000&q=85">
-
-        <div class="property-info">
-          <span>Exclusive Property</span>
-          <h3>Executive Residence</h3>
-          <p>Lagos, Nigeria · 4 Bedrooms · 5 Bathrooms</p>
+            <div class="property-info">
+                <h3>Elegant Family Home</h3>
+                <p>📍 Lekki, Lagos</p>
+                <div class="property-details">
+                    <span>🛏 4 Beds</span>
+                    <span>🚿 4 Baths</span>
+                    <span>📐 390 m²</span>
+                </div>
+                <div class="property-bottom">
+                    <strong>Residential</strong>
+                    <a href="#contact">View Details →</a>
+                </div>
+            </div>
         </div>
-
-      </div>
 
     </div>
-
   </section>
-
-
-  <!-- ABOUT -->
-
-  <section class="section" id="about">
-
-    <div class="section-title">
-
-      <small>About Romax</small>
-
-      <h2>Building More Than Properties.</h2>
-
-      <p>
-        Romax Properties is focused on delivering exceptional
-        real estate developments, luxury homes and professional
-        property management services.
-      </p>
-
-    </div>
-
-  </section>
-
 
   <!-- SERVICES -->
 

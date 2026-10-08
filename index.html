@@ -4,424 +4,476 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Romax Properties | Luxury Real Estate</title>
+  <title>Romax Properties | Luxury Real Estate</title>
 
-<style>
-/* PREMIUM PROPERTY CARDS */
-.properties {
+  <meta name="description" content="Discover luxury homes, residential developments, and professional property management with Romax Properties in Lagos, Nigeria.">
 
-  /* PREMIUM PROPERTY CARDS */
-.properties {
-    padding: 100px 6%;
-    background: #f8f6f1;
-    color: #171717;
-}
-
-.section-heading {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.section-heading span {
-    color: #b89552;
-    font-size: 12px;
-    letter-spacing: 4px;
-    font-weight: bold;
-}
-
-.section-heading h2 {
-    font-size: clamp(30px, 5vw, 48px);
-    margin: 15px 0;
-}
-
-.section-heading p {
-    color: #777;
-    font-size: 15px;
-}
-
-.property-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 25px;
-    max-width: 1250px;
-    margin: auto;
-}
-
-.property-card {
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 10px 35px rgba(0,0,0,.06);
-    transition: transform .35s ease, box-shadow .35s ease;
-}
-
-.property-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 45px rgba(0,0,0,.12);
-}
-
-.property-image {
-    position: relative;
-    height: 250px;
-    overflow: hidden;
-}
-
-.property-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform .5s ease;
-}
-
-.property-card:hover .property-image img {
-    transform: scale(1.06);
-}
-
-.property-tag {
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    background: #d6b36a;
-    color: #171717;
-    padding: 8px 12px;
-    font-size: 10px;
-    letter-spacing: 1px;
-    font-weight: bold;
-}
-
-.property-info {
-    padding: 24px;
-}
-
-.property-info h3 {
-    font-size: 19px;
-    margin: 0 0 12px;
-}
-
-.property-info > p {
-    color: #777;
-    font-size: 13px;
-    margin-bottom: 22px;
-}
-
-.property-details {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
-    color: #666;
-    font-size: 12px;
-}
-
-.property-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    padding-top: 20px;
-}
-
-.property-bottom strong {
-    font-size: 13px;
-}
-
-.property-bottom a {
-    color: #a7833f;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.property-bottom a:hover {
-    color: #171717;
-}
-
-@media (max-width: 900px) {
-    .property-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 600px) {
-    .properties {
-        padding: 70px 5%;
+  <style>
+    :root {
+      --dark: #10100f;
+      --dark-soft: #191917;
+      --gold: #d8b56a;
+      --cream: #f8f6f0;
+      --white: #ffffff;
+      --muted: #a6a49e;
     }
 
-    .property-grid {
-        grid-template-columns: 1fr;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .property-image {
-        height: 240px;
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
     }
-}
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--dark);
+      color: var(--white);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .container {
+      width: min(1180px, 90%);
+      margin: auto;
+    }
+
+    /* NAVIGATION */
+
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+      border-bottom: 1px solid rgba(255,255,255,.15);
+    }
+
+    nav {
+      min-height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      transition: color .3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-contact {
+      border: 1px solid var(--gold);
+      padding: 12px 19px;
+      color: var(--gold);
+    }
+
     /* HERO */
 
     .hero {
-      min-height: 100vh;
+      min-height: 760px;
+      min-height: 100svh;
       display: flex;
       align-items: center;
-      padding: 120px 7% 80px;
       position: relative;
-      overflow: hidden;
-
       background:
-        linear-gradient(
-          90deg,
-          rgba(0,0,0,0.85),
-          rgba(0,0,0,0.35)
-        ),
-        url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85");
-
-      background-size: cover;
-      background-position: center;
+        linear-gradient(90deg, rgba(8,8,7,.88), rgba(8,8,7,.35)),
+        linear-gradient(0deg, rgba(8,8,7,.48), transparent),
+        url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=85")
+        center/cover no-repeat;
     }
 
     .hero-content {
-      max-width: 700px;
-      animation: fadeUp 1.2s ease;
+      padding-top: 100px;
+      max-width: 720px;
     }
 
-    .tag {
-      color: #d6b36a;
-      letter-spacing: 4px;
-      font-size: 12px;
-      margin-bottom: 25px;
+    .eyebrow {
+      color: var(--gold);
       text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 11px;
+      font-weight: bold;
     }
 
     .hero h1 {
-      font-size: clamp(50px, 8vw, 100px);
-      line-height: 0.95;
-      margin-bottom: 30px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(48px, 8vw, 88px);
+      line-height: 1.04;
+      font-weight: 500;
+      margin: 24px 0;
+      animation: fadeUp .9s ease both;
     }
 
     .hero h1 span {
-      color: #d6b36a;
+      color: var(--gold);
     }
 
     .hero p {
-      color: #ddd;
-      max-width: 520px;
-      line-height: 1.8;
-      margin-bottom: 35px;
-      font-size: 16px;
+      color: #e1dfda;
+      max-width: 540px;
+      font-size: 15px;
+      animation: fadeUp .9s ease .2s both;
     }
 
-    .hero-buttons {
+    .buttons {
       display: flex;
-      gap: 15px;
       flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
     }
 
     .btn {
       display: inline-block;
-      padding: 16px 28px;
-      text-decoration: none;
+      padding: 15px 23px;
+      font-size: 12px;
       font-weight: bold;
-      transition: 0.3s;
+      transition: transform .3s, background .3s;
     }
 
-    .primary {
-      background: #d6b36a;
-      color: #111;
-    }
-
-    .primary:hover {
-      background: #fff;
+    .btn:hover {
       transform: translateY(-3px);
     }
 
-    .secondary {
-      border: 1px solid #fff;
-      color: #fff;
+    .btn-gold {
+      background: var(--gold);
+      color: var(--dark);
     }
 
-    .secondary:hover {
-      border-color: #d6b36a;
-      color: #d6b36a;
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,.7);
+      color: white;
     }
 
     /* STATS */
 
     .stats {
+      background: var(--gold);
+      color: var(--dark);
+      padding: 28px 0;
+    }
+
+    .stats-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
-      padding: 60px 7%;
-      background: #111;
+      text-align: center;
     }
 
-    .stat {
-      padding: 20px;
-      border-left: 1px solid #333;
+    .stat strong {
+      display: block;
+      font-family: Georgia, serif;
+      font-size: 32px;
     }
 
-    .stat h2 {
-      color: #d6b36a;
-      font-size: 36px;
-      margin-bottom: 8px;
+    .stat span {
+      font-size: 12px;
     }
 
-    .stat p {
-      color: #999;
+    /* GENERAL SECTIONS */
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-heading h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(34px, 5vw, 52px);
+      font-weight: 500;
+      line-height: 1.2;
+      margin: 12px 0;
+    }
+
+    .section-heading p {
+      color: var(--muted);
       font-size: 14px;
     }
 
-    /* SECTION */
-
-    .section {
-      padding: 100px 7%;
-    }
-
-    .section-title {
-      max-width: 650px;
-      margin-bottom: 55px;
-    }
-
-    .section-title small {
-      color: #d6b36a;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
-    .section-title h2 {
-      font-size: 50px;
-      margin-top: 15px;
-    }
-
-    .section-title p {
-      color: #aaa;
-      line-height: 1.8;
-      margin-top: 20px;
-    }
-
-    /* PROPERTY CARDS */
+    /* PROPERTIES */
 
     .properties {
+      background: var(--cream);
+      color: #171717;
+    }
+
+    .properties .section-heading p {
+      color: #77746d;
+    }
+
+    .property-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
     }
 
-    .property {
-      background: #151515;
+    .property-card {
+      background: white;
       overflow: hidden;
-      transition: 0.4s;
+      box-shadow: 0 10px 35px rgba(0,0,0,.07);
+      transition: transform .35s, box-shadow .35s;
+      animation: fadeUp .8s ease both;
     }
 
-    .property:hover {
-      transform: translateY(-10px);
+    .property-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 45px rgba(0,0,0,.13);
     }
 
-    .property img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      display: block;
+    .property-image {
+      height: 260px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .property-image img {
+      height: 100%;
+      transition: transform .6s;
+    }
+
+    .property-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: var(--gold);
+      padding: 6px 11px;
+      font-size: 10px;
+      font-weight: bold;
+      letter-spacing: 1px;
     }
 
     .property-info {
-      padding: 25px;
-    }
-
-    .property-info span {
-      color: #d6b36a;
-      font-size: 12px;
-      text-transform: uppercase;
+      padding: 24px;
     }
 
     .property-info h3 {
-      margin: 12px 0;
-      font-size: 23px;
+      font-family: Georgia, serif;
+      font-size: 22px;
+      line-height: 1.3;
+      margin-bottom: 8px;
     }
 
-    .property-info p {
-      color: #999;
+    .location {
+      color: #777;
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+
+    .property-bottom {
+      border-top: 1px solid #eee;
+      padding-top: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+    }
+
+    .property-bottom span {
+      color: #9c7a36;
+    }
+
+    .demo-note {
+      text-align: center;
+      margin-top: 30px;
+      color: #77746d;
+      font-size: 11px;
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 65px;
+    }
+
+    .about-image {
+      height: 520px;
+      position: relative;
+    }
+
+    .about-image img {
+      height: 100%;
+    }
+
+    .about-copy h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(35px, 5vw, 52px);
+      line-height: 1.15;
+      font-weight: 500;
+      margin: 18px 0;
+    }
+
+    .about-copy p {
+      color: var(--muted);
       font-size: 14px;
-      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .gold-line {
+      width: 65px;
+      height: 3px;
+      background: var(--gold);
+      margin: 25px 0;
     }
 
     /* SERVICES */
 
     .services {
+      background: var(--dark-soft);
+    }
+
+    .service-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      background: #373630;
+      border: 1px solid #373630;
     }
 
-    .service {
-      padding: 35px;
-      border: 1px solid #292929;
-      transition: 0.3s;
+    .service-card {
+      background: var(--dark-soft);
+      padding: 34px 28px;
+      transition: background .3s;
     }
 
-    .service:hover {
-      border-color: #d6b36a;
+    .service-card:hover {
+      background: #24231e;
     }
 
     .service-number {
-      color: #d6b36a;
+      color: var(--gold);
+      font-family: Georgia, serif;
+      font-size: 30px;
+    }
+
+    .service-card h3 {
+      font-family: Georgia, serif;
+      font-size: 21px;
+      margin: 16px 0 10px;
+    }
+
+    .service-card p {
+      color: var(--muted);
       font-size: 13px;
     }
 
-    .service h3 {
-      margin: 25px 0 15px;
-      font-size: 22px;
-    }
+    /* CONTACT */
 
-    .service p {
-      color: #999;
-      line-height: 1.7;
-    }
-
-    /* CTA */
-
-    .cta {
-      margin: 30px 7% 100px;
-      padding: 80px 8%;
+    .contact {
       text-align: center;
       background:
-        linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
-        url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=85");
-      background-size: cover;
-      background-position: center;
+        linear-gradient(rgba(10,10,9,.84), rgba(10,10,9,.9)),
+        url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
     }
 
-    .cta h2 {
-      font-size: 50px;
-      margin-bottom: 20px;
+    .contact h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(38px, 6vw, 64px);
+      font-weight: 500;
+      line-height: 1.15;
+      margin: 18px 0;
     }
 
-    .cta p {
-      color: #ddd;
-      margin-bottom: 30px;
+    .contact p {
+      color: #d1cfc8;
+      font-size: 14px;
+      margin-bottom: 28px;
     }
 
     /* FOOTER */
 
     footer {
-      padding: 50px 7%;
-      background: #070707;
-      border-top: 1px solid #222;
+      background: #090909;
+      padding: 35px 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-content {
       display: flex;
       justify-content: space-between;
-      gap: 30px;
+      align-items: center;
       flex-wrap: wrap;
+      gap: 18px;
     }
 
-    footer p {
-      color: #777;
-      font-size: 13px;
+    .footer-content .logo {
+      color: white;
     }
 
-    /* ANIMATION */
+    /* FLOATING CALL BUTTON */
+
+    .call-button {
+      position: fixed;
+      right: 18px;
+      bottom: 22px;
+      z-index: 50;
+      background: var(--gold);
+      color: #111;
+      padding: 13px 18px;
+      border-radius: 40px;
+      font-size: 12px;
+      font-weight: bold;
+      box-shadow: 0 6px 25px rgba(0,0,0,.25);
+      transition: transform .3s;
+    }
+
+    .call-button:hover {
+      transform: translateY(-4px);
+    }
+
+    /* ANIMATIONS */
 
     @keyframes fadeUp {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(24px);
       }
 
       to {
@@ -430,45 +482,134 @@
       }
     }
 
-    /* MOBILE */
+    .property-card:nth-child(2) {
+      animation-delay: .15s;
+    }
+
+    .property-card:nth-child(3) {
+      animation-delay: .3s;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+
+    /* MOBILE RESPONSIVE */
 
     @media (max-width: 800px) {
+      nav {
+        min-height: 75px;
+      }
+
+      .logo {
+        font-size: 21px;
+        letter-spacing: 3px;
+      }
 
       .nav-links {
+        gap: 13px;
+        font-size: 11px;
+      }
+
+      .nav-contact {
         display: none;
       }
 
       .hero {
-        min-height: 90vh;
-        padding: 130px 7% 70px;
+        min-height: 720px;
+        min-height: 100svh;
+        background-position: center;
+      }
+
+      .hero-content {
+        padding-top: 100px;
+      }
+
+      .property-grid {
+        grid-template-columns: 1fr;
+        max-width: 520px;
+        margin: auto;
+      }
+
+      .property-image {
+        height: 280px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .about-image {
+        height: 350px;
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: 91%;
+      }
+
+      nav {
+        gap: 8px;
+      }
+
+      .logo {
+        font-size: 18px;
+        letter-spacing: 2px;
+      }
+
+      .nav-links {
+        gap: 10px;
+        font-size: 10px;
       }
 
       .hero h1 {
-        font-size: 55px;
+        font-size: 49px;
       }
 
-      .stats {
+      .hero p {
+        font-size: 13px;
+      }
+
+      section {
+        padding: 75px 0;
+      }
+
+      .stats-grid {
+        gap: 8px;
+      }
+
+      .stat strong {
+        font-size: 25px;
+      }
+
+      .stat span {
+        font-size: 10px;
+      }
+
+      .service-grid {
         grid-template-columns: 1fr;
       }
 
-      .properties {
-        grid-template-columns: 1fr;
+      .service-card {
+        padding: 25px;
       }
 
-      .services {
-        grid-template-columns: 1fr;
-      }
-
-      .section-title h2 {
-        font-size: 38px;
-      }
-
-      .cta h2 {
-        font-size: 38px;
-      }
-
-      .property img {
-        height: 250px;
+      .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
@@ -477,329 +618,273 @@
 <body>
 
   <!-- NAVIGATION -->
+  <header>
+    <nav class="container">
+      <a href="#home" class="logo">ROMAX<span>.</span></a>
 
-  <nav>
-    <div class="logo">
-      ROMAX<span>.</span>
-    </div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#properties">Properties</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+      </div>
 
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#properties">Properties</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-    </ul>
+      <a href="#contact" class="nav-contact">CONTACT US</a>
+    </nav>
+  </header>
 
-
-    <!-- Floating Call Button -->
-<a href="tel:+2347019673310" class="call-button">
-  📞 Call Romax
-</a>
-/* Smooth Entrance Animations */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.hero h1 {
-  animation: fadeUp 1s ease both;
-}
-
-.hero p {
-  animation: fadeUp 1s ease .2s both;
-}
-
-.property-card {
-  animation: fadeUp .8s ease both;
-}
-
-.property-card:nth-child(2) {
-  animation-delay: .15s;
-}
-
-.property-card:nth-child(3) {
-  animation-delay: .3s;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-<style>
-.call-button {
-  position: fixed;
-  right: 20px;
-  bottom: 25px;
-  z-index: 9999;
-  background: #d6b36a;
-  color: #111;
-  padding: 15px 22px;
-  border-radius: 50px;
-  font-size: 14px;
-  font-weight: bold;
-  text-decoration: none;
-  box-shadow: 0 5px 20px rgba(0,0,0,.2);
-  transition: transform .3s ease;
-}
-
-.call-button:hover {
-  transform: translateY(-4px);
-}
-</style>
   <!-- HERO -->
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <div class="eyebrow">Luxury Real Estate</div>
 
-  <section class="hero" id="home">
+        <h1>Spaces<br>Worth <span>Living.</span></h1>
 
-    <div class="hero-content">
+        <p>
+          Discover exceptional properties designed for modern living.
+          Explore inspiring homes and thoughtful real estate solutions
+          built around quality, comfort and timeless design.
+        </p>
 
-      <div class="tag">
-        Luxury Real Estate
+        <div class="buttons">
+          <a href="#properties" class="btn btn-gold">Explore Properties ↗</a>
+          <a href="#contact" class="btn btn-outline">Get In Touch</a>
+        </div>
       </div>
+    </section>
 
-      <h1>
-        Spaces<br>
-        Worth <span>Living.</span>
-      </h1>
+    <!-- STATS -->
+    <div class="stats">
+      <div class="container stats-grid">
+        <div class="stat">
+          <strong>500+</strong>
+          <span>Happy Clients</span>
+        </div>
 
-      <p>
-        Discover exceptional properties designed for modern living.
-        Romax Properties creates and manages premium real estate
-        experiences built around quality, comfort and timeless design.
-      </p>
+        <div class="stat">
+          <strong>50+</strong>
+          <span>Premium Properties</span>
+        </div>
 
-      <div class="hero-buttons">
-        <a href="#properties" class="btn primary">
-          Explore Properties
+        <div class="stat">
+          <strong>10+</strong>
+          <span>Years of Excellence</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROPERTIES -->
+    <section class="properties" id="properties">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Our Collection</div>
+          <h2>Featured Properties</h2>
+          <p>Explore premium spaces designed for modern living.</p>
+        </div>
+
+        <div class="property-grid">
+
+          <article class="property-card">
+            <div class="property-image">
+              <img
+                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85"
+                alt="Modern luxury residential interior"
+                loading="lazy"
+              >
+              <span class="badge">FOR SALE</span>
+            </div>
+
+            <div class="property-info">
+              <h3>Modern Luxury Residence</h3>
+              <p class="location">📍 Lagos, Nigeria</p>
+
+              <div class="property-bottom">
+                <strong>Luxury Home</strong>
+                <a href="#contact">View Details ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="property-card">
+            <div class="property-image">
+              <img
+                src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85"
+                alt="Contemporary villa interior"
+                loading="lazy"
+              >
+              <span class="badge">FEATURED</span>
+            </div>
+
+            <div class="property-info">
+              <h3>Contemporary Villa</h3>
+              <p class="location">📍 Chevron, Lagos</p>
+
+              <div class="property-bottom">
+                <strong>Premium Villa</strong>
+                <a href="#contact">View Details ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="property-card">
+            <div class="property-image">
+              <img
+                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85"
+                alt="Elegant modern family home"
+                loading="lazy"
+              >
+              <span class="badge">NEW</span>
+            </div>
+
+            <div class="property-info">
+              <h3>Elegant Family Home</h3>
+              <p class="location">📍 Lekki, Lagos</p>
+
+              <div class="property-bottom">
+                <strong>Residential</strong>
+                <a href="#contact">View Details ↗</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="demo-note">
+          Demonstration website. Property images are illustrative and do not
+          confirm actual Romax Properties listings.
+        </p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container about-grid">
+
+        <div class="about-image">
+          <img
+            src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=85"
+            alt="Modern architectural interior"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="about-copy">
+          <div class="eyebrow">A Better Way to Live</div>
+
+          <h2>Thoughtful Spaces.<br>Lasting Value.</h2>
+
+          <div class="gold-line"></div>
+
+          <p>
+            Great spaces are about more than buildings. They are about
+            comfort, thoughtful design, and the everyday experiences
+            that make a place feel like home.
+          </p>
+
+          <p>
+            This demonstration website presents a premium digital concept
+            for real estate development, luxury homes, and property
+            management in Lagos.
+          </p>
+
+          <a href="#services" class="btn btn-gold">Discover Our Services ↗</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">What We Do</div>
+          <h2>Our Expertise.</h2>
+          <p>Real estate solutions for modern property needs.</p>
+        </div>
+
+        <div class="service-grid">
+
+          <article class="service-card">
+            <div class="service-number">01</div>
+            <h3>Estate Development</h3>
+            <p>Thoughtfully planned residential communities for modern lifestyles.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-number">02</div>
+            <h3>Luxury Homes</h3>
+            <p>Elegant homes combining comfort, architecture and contemporary design.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-number">03</div>
+            <h3>Property Management</h3>
+            <p>Professional property care and management solutions.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-number">04</div>
+            <h3>New Construction</h3>
+            <p>Construction concepts focused on quality and attention to detail.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-number">05</div>
+            <h3>Real Estate Development</h3>
+            <p>Property development concepts designed for long-term value.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-number">06</div>
+            <h3>Management Services</h3>
+            <p>Organised support for property owners and residential communities.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="eyebrow">Your Next Chapter Starts Here</div>
+
+        <h2>Let's Find Your<br>Next Property.</h2>
+
+        <p>
+          Interested in learning more? Contact Romax Properties by phone.
+        </p>
+
+        <a href="tel:+2347019673310" class="btn btn-gold">
+          📞 Call Romax Properties
         </a>
 
-        <a href="#contact" class="btn secondary">
-          Get In Touch
-        </a>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- STATS -->
-
-  <section class="stats">
-
-    <div class="stat">
-      <h2>500+</h2>
-      <p>Happy Clients</p>
-    </div>
-
-    <div class="stat">
-      <h2>50+</h2>
-      <p>Premium Properties</p>
-    </div>
-
-    <div class="stat">
-      <h2>10+</h2>
-      <p>Years of Excellence</p>
-    </div>
-
-  </section>
-
-
-  <!-- PROPERTIES -->
-
-  <section id="properties" class="properties">
-    <div class="section-heading">
-        <span>OUR COLLECTION</span>
-        <h2>Featured Properties</h2>
-        <p>Explore premium spaces designed for modern living.</p>
-    </div>
-
-    <div class="property-grid">
-
-        <div class="property-card">
-            <div class="property-image">
-                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80" alt="Luxury modern home">
-                <span class="property-tag">FOR SALE</span>
-            </div>
-
-            <div class="property-info">
-                <h3>Modern Luxury Residence</h3>
-                <p>📍 Lagos, Nigeria</p>
-                <div class="property-details">
-                    <span>🛏 4 Beds</span>
-                    <span>🚿 4 Baths</span>
-                    <span>📐 450 m²</span>
-                </div>
-                <div class="property-bottom">
-                    <strong>Luxury Home</strong>
-                    <a href="#contact">View Details →</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="property-card">
-            <div class="property-image">
-                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" alt="Contemporary luxury house">
-                <span class="property-tag">FEATURED</span>
-            </div>
-
-            <div class="property-info">
-                <h3>Contemporary Villa</h3>
-                <p>📍 Chevron, Lagos</p>
-                <div class="property-details">
-                    <span>🛏 5 Beds</span>
-                    <span>🚿 5 Baths</span>
-                    <span>📐 520 m²</span>
-                </div>
-                <div class="property-bottom">
-                    <strong>Premium Villa</strong>
-                    <a href="#contact">View Details →</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="property-card">
-            <div class="property-image">
-                <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=80" alt="Elegant luxury interior">
-                <span class="property-tag">NEW</span>
-            </div>
-
-            <div class="property-info">
-                <h3>Elegant Family Home</h3>
-                <p>📍 Lekki, Lagos</p>
-                <div class="property-details">
-                    <span>🛏 4 Beds</span>
-                    <span>🚿 4 Baths</span>
-                    <span>📐 390 m²</span>
-                </div>
-                <div class="property-bottom">
-                    <strong>Residential</strong>
-                    <a href="#contact">View Details →</a>
-                </div>
-            </div>
-        </div>
-
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-
-  <section class="section" id="services">
-
-    <div class="section-title">
-
-      <small>What We Do</small>
-
-      <h2>Our Expertise.</h2>
-
-    </div>
-
-    <div class="services">
-
-      <div class="service">
-        <div class="service-number">01</div>
-        <h3>Estate Development</h3>
-        <p>
-          Creating thoughtfully planned residential communities
-          designed for modern lifestyles.
+        <p style="margin-top: 20px; font-size: 11px;">
+          Please verify the contact number with the business before
+          publishing this demonstration as an official website.
         </p>
       </div>
+    </section>
 
-      <div class="service">
-        <div class="service-number">02</div>
-        <h3>Luxury Homes</h3>
-        <p>
-          Premium homes combining elegant architecture,
-          comfort and contemporary design.
-        </p>
-      </div>
-
-      <div class="service">
-        <div class="service-number">03</div>
-        <h3>Property Management</h3>
-        <p>
-          Professional management solutions that protect
-          and maintain valuable properties.
-        </p>
-      </div>
-
-      <div class="service">
-        <div class="service-number">04</div>
-        <h3>New Construction</h3>
-        <p>
-          Modern construction projects developed with
-          quality and attention to detail.
-        </p>
-      </div>
-
-      <div class="service">
-        <div class="service-number">05</div>
-        <h3>Real Estate Development</h3>
-        <p>
-          Strategic property development focused on
-          long-term value and quality.
-        </p>
-      </div>
-
-      <div class="service">
-        <div class="service-number">06</div>
-        <h3>Management Services</h3>
-        <p>
-          Reliable solutions for property owners,
-          investors and residential communities.
-        </p>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- CONTACT CTA -->
-
-  <section class="cta" id="contact">
-
-    <h2>Let's Find Your Next Property.</h2>
-
-    <pp
-      Looking for a home, investment or premium property?
-      Let's start a conversation.
-    </p>
-
-    <a href="tel:" class="btn primary">
-      Contact Romax
-    </a>
-
-  </section>
-
+  </main>
 
   <!-- FOOTER -->
-
   <footer>
+    <div class="container footer-content">
+      <a href="#home" class="logo">ROMAX<span>.</span></a>
 
-    <div class="logo">
-      ROMAX<span>.</span>
+      <p>Chevron, 45A Alternative Route, Eti-Osa, Lagos.</p>
+
+      <p>© 2026 Romax Properties — Demo Website</p>
     </div>
-
-    <p>
-      © 2026 Romax Properties Demo Website
-    </p>
-
-    <p>
-      Chevron, 45A Alternative Route, Eti-Osa, Lagos
-    </p>
-
   </footer>
+
+  <!-- FLOATING CALL BUTTON -->
+  <a href="tel:+2347019673310" class="call-button">
+    📞 Call Romax
+  </a>
 
 </body>
 </html>

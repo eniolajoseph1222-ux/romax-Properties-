@@ -611,6 +611,153 @@
         flex-direction: column;
         align-items: flex-start;
       }
+      /* ==================================
+   ROMAX PROPERTIES CINEMATIC INTRO
+================================== */
+
+#romax-intro {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  background: #080807;
+  z-index: 99999;
+  overflow: hidden;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+#romax-intro.romax-finished {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#romax-opening,
+#romax-video-screen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1.2s ease;
+}
+
+#romax-opening {
+  z-index: 2;
+  background:
+    linear-gradient(rgba(0,0,0,.48), rgba(0,0,0,.65)),
+    url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=85")
+    center/cover no-repeat;
+}
+
+#romax-opening.romax-hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#romax-video-screen {
+  z-index: 1;
+  background: #080807;
+}
+
+#romax-intro-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .8;
+}
+
+.romax-intro-name,
+.romax-video-name {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  text-align: center;
+  color: #fff;
+  font-size: clamp(27px, 6vw, 66px);
+  font-weight: 800;
+  letter-spacing: clamp(3px, 1vw, 9px);
+  animation: romaxTitleIn 1.6s ease both;
+}
+
+.romax-intro-name span,
+.romax-video-name span {
+  color: #d8b56a;
+}
+
+.romax-intro-name p {
+  margin-top: 18px;
+  font-size: 10px;
+  letter-spacing: 5px;
+  font-weight: 400;
+}
+
+.romax-video-name {
+  top: 15%;
+  font-size: clamp(18px, 3vw, 34px);
+  pointer-events: none;
+}
+
+#romax-skip {
+  position: absolute;
+  z-index: 5;
+  bottom: 35px;
+  right: 30px;
+  padding: 13px 22px;
+  background: rgba(8,8,7,.6);
+  border: 1px solid #d8b56a;
+  color: #d8b56a;
+  font-size: 11px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: background .3s ease, color .3s ease;
+}
+
+#romax-skip:hover {
+  background: #d8b56a;
+  color: #080807;
+}
+
+@keyframes romaxTitleIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .romax-intro-name p {
+    font-size: 8px;
+    letter-spacing: 3px;
+  }
+
+  #romax-skip {
+    right: 18px;
+    bottom: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .romax-intro-name,
+  .romax-video-name {
+    animation: none;
+  }
+
+  #romax-intro,
+  #romax-opening,
+  #romax-video-screen {
+    transition: none;
+  }
+}
     }
   </style>
 </head>

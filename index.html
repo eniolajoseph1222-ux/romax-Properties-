@@ -4,18 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Romax Properties | Luxury Real Estate</title>
+  <meta name="theme-color" content="#10100f">
+  <meta name="description" content="Discover luxury living with ROMAX PROPERTIES. Explore elegant homes, property development and property management services.">
 
-  <meta name="description" content="Discover luxury homes, residential developments, and professional property management with Romax Properties in Lagos, Nigeria.">
+  <title>ROMAX PROPERTIES | Luxury Real Estate</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --dark: #10100f;
-      --dark-soft: #191917;
+      --dark-light: #191917;
       --gold: #d8b56a;
-      --cream: #f8f6f0;
       --white: #ffffff;
-      --muted: #a6a49e;
+      --cream: #f5f0e6;
+      --muted: #aaa69e;
+      --border: rgba(216,181,106,.25);
     }
 
     * {
@@ -30,10 +37,14 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "DM Sans", Arial, sans-serif;
       background: var(--dark);
       color: var(--white);
       line-height: 1.7;
+    }
+
+    body.intro-active {
+      overflow: hidden;
     }
 
     a {
@@ -47,12 +58,246 @@
       object-fit: cover;
     }
 
+    button {
+      font: inherit;
+    }
+
     .container {
       width: min(1180px, 90%);
       margin: auto;
     }
 
-    /* NAVIGATION */
+    .section {
+      padding: 110px 0;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .section-heading {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 500;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .section-description {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .gold {
+      color: var(--gold);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 15px 24px;
+      border: 1px solid var(--gold);
+      background: var(--gold);
+      color: var(--dark);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: .3s ease;
+    }
+
+    .btn:hover {
+      background: transparent;
+      color: var(--gold);
+      transform: translateY(-3px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+    }
+
+    .btn-outline:hover {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    /* =====================================
+       CINEMATIC INTRO
+    ===================================== */
+
+    #romax-intro {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100svh;
+      overflow: hidden;
+      z-index: 99999;
+      background: #080807;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 1s ease, visibility 1s ease;
+    }
+
+    #romax-intro.finished {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .intro-screen {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    #romax-opening {
+      z-index: 2;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,.68),
+          rgba(0,0,0,.22),
+          rgba(0,0,0,.58)
+        ),
+        linear-gradient(
+          0deg,
+          rgba(0,0,0,.6),
+          transparent 65%
+        ),
+        url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=85")
+        center/cover no-repeat;
+      animation: introZoom 8s ease both;
+      transition: opacity 1.2s ease;
+    }
+
+    #romax-opening.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #romax-video-screen {
+      z-index: 1;
+      background: #080807;
+    }
+
+    #romax-intro-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .intro-video-shade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        0deg,
+        rgba(0,0,0,.5),
+        transparent 45%,
+        rgba(0,0,0,.25)
+      );
+      pointer-events: none;
+    }
+
+    .intro-brand {
+      position: relative;
+      z-index: 3;
+      width: 90%;
+      text-align: center;
+      font-size: clamp(27px, 6vw, 68px);
+      font-weight: 700;
+      letter-spacing: clamp(3px, 1vw, 10px);
+      animation: titleReveal 1.5s ease both;
+    }
+
+    .intro-brand span {
+      color: var(--gold);
+    }
+
+    .intro-tagline {
+      margin-top: 18px;
+      color: rgba(255,255,255,.8);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 5px;
+    }
+
+    .video-brand {
+      position: absolute;
+      z-index: 4;
+      top: 11%;
+      left: 5%;
+      right: 5%;
+      text-align: center;
+      font-size: clamp(18px, 3vw, 34px);
+      font-weight: 700;
+      letter-spacing: 4px;
+    }
+
+    .video-brand span {
+      color: var(--gold);
+    }
+
+    #romax-skip {
+      position: absolute;
+      z-index: 10;
+      right: 25px;
+      bottom: 28px;
+      padding: 13px 20px;
+      border: 1px solid var(--gold);
+      background: rgba(8,8,7,.72);
+      color: var(--gold);
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      transition: .3s ease;
+    }
+
+    #romax-skip:hover {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    @keyframes titleReveal {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes introZoom {
+      from {
+        background-position: center;
+        background-size: 110%;
+      }
+      to {
+        background-position: center;
+        background-size: 120%;
+      }
+    }
+
+    /* =====================================
+       HEADER & NAVIGATION
+    ===================================== */
 
     header {
       position: absolute;
@@ -61,6 +306,11 @@
       width: 100%;
       z-index: 10;
       border-bottom: 1px solid rgba(255,255,255,.15);
+      background: linear-gradient(
+        180deg,
+        rgba(0,0,0,.45),
+        transparent
+      );
     }
 
     nav {
@@ -72,9 +322,10 @@
     }
 
     .logo {
-      font-size: 25px;
-      font-weight: 800;
-      letter-spacing: 4px;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      white-space: nowrap;
     }
 
     .logo span {
@@ -84,8 +335,8 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 30px;
-      font-size: 13px;
+      gap: 27px;
+      font-size: 12px;
     }
 
     .nav-links a {
@@ -97,12 +348,29 @@
     }
 
     .nav-contact {
+      padding: 11px 17px;
       border: 1px solid var(--gold);
-      padding: 12px 19px;
       color: var(--gold);
     }
 
-    /* HERO */
+    .nav-contact:hover {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--white);
+      padding: 9px 12px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    /* =====================================
+       HERO
+    ===================================== */
 
     .hero {
       min-height: 760px;
@@ -111,8 +379,16 @@
       align-items: center;
       position: relative;
       background:
-        linear-gradient(90deg, rgba(8,8,7,.88), rgba(8,8,7,.35)),
-        linear-gradient(0deg, rgba(8,8,7,.48), transparent),
+        linear-gradient(
+          90deg,
+          rgba(8,8,7,.88),
+          rgba(8,8,7,.35)
+        ),
+        linear-gradient(
+          0deg,
+          rgba(8,8,7,.48),
+          transparent
+        ),
         url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=85")
         center/cover no-repeat;
     }
@@ -120,281 +396,293 @@
     .hero-content {
       padding-top: 100px;
       max-width: 720px;
-    }
-
-    .eyebrow {
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 11px;
-      font-weight: bold;
+      animation: contentReveal 1.2s .2s both;
     }
 
     .hero h1 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(48px, 8vw, 88px);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(54px, 8vw, 100px);
       line-height: 1.04;
       font-weight: 500;
-      margin: 24px 0;
-      animation: fadeUp .9s ease both;
+      margin-bottom: 28px;
     }
 
     .hero h1 span {
       color: var(--gold);
+      font-style: italic;
     }
 
-    .hero p {
-      color: #e1dfda;
-      max-width: 540px;
+    .hero-description {
+      max-width: 520px;
+      color: rgba(255,255,255,.8);
       font-size: 15px;
-      animation: fadeUp .9s ease .2s both;
+      margin-bottom: 35px;
     }
 
-    .buttons {
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 32px;
+      gap: 15px;
     }
 
-    .btn {
-      display: inline-block;
-      padding: 15px 23px;
-      font-size: 12px;
-      font-weight: bold;
-      transition: transform .3s, background .3s;
+    .hero-bottom {
+      position: absolute;
+      bottom: 35px;
+      left: 5%;
+      right: 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      color: rgba(255,255,255,.75);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
-    .btn:hover {
-      transform: translateY(-3px);
+    .hero-bottom span:first-child {
+      color: var(--gold);
     }
 
-    .btn-gold {
-      background: var(--gold);
-      color: var(--dark);
+    @keyframes contentReveal {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .btn-outline {
-      border: 1px solid rgba(255,255,255,.7);
-      color: white;
-    }
-
-    /* STATS */
+    /* =====================================
+       STATS
+    ===================================== */
 
     .stats {
-      background: var(--gold);
-      color: var(--dark);
-      padding: 28px 0;
+      padding: 35px 0;
+      background: var(--dark-light);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
 
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 25px;
       text-align: center;
     }
 
-    .stat strong {
-      display: block;
-      font-family: Georgia, serif;
-      font-size: 32px;
+    .stat-number {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 38px;
+      color: var(--gold);
     }
 
-    .stat span {
-      font-size: 12px;
-    }
-
-    /* GENERAL SECTIONS */
-
-    section {
-      padding: 100px 0;
-    }
-
-    .section-heading {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    .section-heading h2 {
-      font-family: Georgia, serif;
-      font-size: clamp(34px, 5vw, 52px);
-      font-weight: 500;
-      line-height: 1.2;
-      margin: 12px 0;
-    }
-
-    .section-heading p {
+    .stat-label {
       color: var(--muted);
-      font-size: 14px;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
     }
 
-    /* PROPERTIES */
+    /* =====================================
+       PROPERTIES
+    ===================================== */
 
-    .properties {
-      background: var(--cream);
-      color: #171717;
-    }
-
-    .properties .section-heading p {
-      color: #77746d;
+    .properties-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 45px;
     }
 
     .property-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
     }
 
     .property-card {
-      background: white;
-      overflow: hidden;
-      box-shadow: 0 10px 35px rgba(0,0,0,.07);
-      transition: transform .35s, box-shadow .35s;
-      animation: fadeUp .8s ease both;
+      background: var(--dark-light);
+      border: 1px solid rgba(255,255,255,.07);
+      transition: transform .4s ease, border-color .4s ease;
     }
 
     .property-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 18px 45px rgba(0,0,0,.13);
+      border-color: var(--gold);
     }
 
     .property-image {
-      height: 260px;
-      position: relative;
+      height: 280px;
       overflow: hidden;
+      position: relative;
     }
 
     .property-image img {
       height: 100%;
-      transition: transform .6s;
+      transition: transform .7s ease;
     }
 
-    .property-card:hover img {
-      transform: scale(1.06);
+    .property-card:hover .property-image img {
+      transform: scale(1.07);
     }
 
-    .badge {
+    .property-tag {
       position: absolute;
-      top: 16px;
-      left: 16px;
+      top: 18px;
+      left: 18px;
+      padding: 7px 11px;
       background: var(--gold);
-      padding: 6px 11px;
-      font-size: 10px;
-      font-weight: bold;
+      color: var(--dark);
+      font-size: 9px;
+      font-weight: 700;
       letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
     .property-info {
-      padding: 24px;
+      padding: 25px;
+    }
+
+    .property-location {
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
     }
 
     .property-info h3 {
-      font-family: Georgia, serif;
-      font-size: 22px;
-      line-height: 1.3;
-      margin-bottom: 8px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 12px;
     }
 
-    .location {
-      color: #777;
-      font-size: 12px;
+    .property-info p {
+      color: var(--muted);
+      font-size: 13px;
       margin-bottom: 20px;
     }
 
-    .property-bottom {
-      border-top: 1px solid #eee;
-      padding-top: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
+    .property-link {
+      display: inline-block;
+      padding-bottom: 5px;
+      border-bottom: 1px solid var(--gold);
+      color: var(--gold);
       font-size: 11px;
-    }
-
-    .property-bottom span {
-      color: #9c7a36;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
     .demo-note {
-      text-align: center;
-      margin-top: 30px;
-      color: #77746d;
+      margin-top: 25px;
+      color: var(--muted);
       font-size: 11px;
     }
 
-    /* ABOUT */
+    /* =====================================
+       ABOUT
+    ===================================== */
+
+    .about {
+      background: var(--cream);
+      color: var(--dark);
+    }
 
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
-      gap: 65px;
+      gap: 70px;
     }
 
     .about-image {
-      height: 520px;
+      min-height: 540px;
       position: relative;
     }
 
     .about-image img {
+      position: absolute;
+      inset: 0;
       height: 100%;
     }
 
-    .about-copy h2 {
-      font-family: Georgia, serif;
-      font-size: clamp(35px, 5vw, 52px);
-      line-height: 1.15;
-      font-weight: 500;
-      margin: 18px 0;
-    }
-
-    .about-copy p {
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 18px;
-    }
-
-    .gold-line {
-      width: 65px;
-      height: 3px;
+    .about-image-label {
+      position: absolute;
+      bottom: 25px;
+      right: -20px;
+      padding: 22px;
       background: var(--gold);
-      margin: 25px 0;
+      color: var(--dark);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
-    /* SERVICES */
-
-    .services {
-      background: var(--dark-soft);
+    .about .section-description {
+      color: #656159;
     }
 
-    .service-grid {
+    .about-list {
+      margin: 28px 0;
+      list-style: none;
+    }
+
+    .about-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(0,0,0,.12);
+      font-size: 14px;
+    }
+
+    .about-list li::before {
+      content: "✦";
+      color: #ad873e;
+      margin-right: 12px;
+    }
+
+    /* =====================================
+       SERVICES
+    ===================================== */
+
+    .services-heading {
+      margin-bottom: 45px;
+    }
+
+    .services-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1px;
-      background: #373630;
-      border: 1px solid #373630;
+      background: var(--border);
+      border: 1px solid var(--border);
     }
 
     .service-card {
-      background: var(--dark-soft);
-      padding: 34px 28px;
-      transition: background .3s;
+      padding: 35px;
+      background: var(--dark);
+      transition: background .3s ease;
     }
 
     .service-card:hover {
-      background: #24231e;
+      background: var(--dark-light);
     }
 
     .service-number {
+      display: inline-block;
+      margin-bottom: 25px;
       color: var(--gold);
-      font-family: Georgia, serif;
+      font-family: "Playfair Display", Georgia, serif;
       font-size: 30px;
     }
 
     .service-card h3 {
-      font-family: Georgia, serif;
-      font-size: 21px;
-      margin: 16px 0 10px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 23px;
+      font-weight: 500;
+      margin-bottom: 12px;
     }
 
     .service-card p {
@@ -402,208 +690,238 @@
       font-size: 13px;
     }
 
-    /* CONTACT */
+    /* =====================================
+       CONTACT
+    ===================================== */
 
     .contact {
-      text-align: center;
       background:
-        linear-gradient(rgba(10,10,9,.84), rgba(10,10,9,.9)),
+        linear-gradient(
+          90deg,
+          rgba(8,8,7,.94),
+          rgba(8,8,7,.77)
+        ),
         url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85")
-        center/cover;
+        center/cover no-repeat;
     }
 
-    .contact h2 {
-      font-family: Georgia, serif;
-      font-size: clamp(38px, 6vw, 64px);
-      font-weight: 500;
-      line-height: 1.15;
-      margin: 18px 0;
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 70px;
+      align-items: center;
     }
 
-    .contact p {
-      color: #d1cfc8;
+    .contact .section-description {
+      margin-bottom: 30px;
+    }
+
+    .contact-details {
+      padding: 35px;
+      background: rgba(16,16,15,.86);
+      border: 1px solid var(--border);
+    }
+
+    .contact-item {
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+
+    .contact-item:last-child {
+      border-bottom: none;
+    }
+
+    .contact-label {
+      display: block;
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    .contact-value {
       font-size: 14px;
-      margin-bottom: 28px;
+      overflow-wrap: anywhere;
     }
 
-    /* FOOTER */
+    /* =====================================
+       FOOTER
+    ===================================== */
 
     footer {
-      background: #090909;
-      padding: 35px 0;
-      color: var(--muted);
-      font-size: 12px;
+      padding: 40px 0;
+      background: #090908;
+      border-top: 1px solid var(--border);
     }
 
     .footer-content {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 18px;
+      justify-content: space-between;
+      gap: 25px;
     }
 
-    .footer-content .logo {
-      color: white;
+    .footer-copy {
+      color: var(--muted);
+      font-size: 11px;
     }
 
-    /* FLOATING CALL BUTTON */
-
-    .call-button {
-      position: fixed;
-      right: 18px;
-      bottom: 22px;
-      z-index: 50;
-      background: var(--gold);
-      color: #111;
-      padding: 13px 18px;
-      border-radius: 40px;
-      font-size: 12px;
-      font-weight: bold;
-      box-shadow: 0 6px 25px rgba(0,0,0,.25);
-      transition: transform .3s;
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      font-size: 11px;
     }
 
-    .call-button:hover {
-      transform: translateY(-4px);
+    .footer-links a:hover {
+      color: var(--gold);
     }
 
-    /* ANIMATIONS */
+    /* =====================================
+       SCROLL ANIMATIONS
+    ===================================== */
 
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(24px);
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =====================================
+       MOBILE RESPONSIVENESS
+    ===================================== */
+
+    @media (max-width: 900px) {
+      .nav-links {
+        gap: 15px;
       }
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
+      .property-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid,
+      .contact-grid {
+        gap: 40px;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-image {
+        min-height: 430px;
       }
     }
 
-    .property-card:nth-child(2) {
-      animation-delay: .15s;
-    }
-
-    .property-card:nth-child(3) {
-      animation-delay: .3s;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
+    @media (max-width: 650px) {
+      .section {
+        padding: 75px 0;
       }
-    }
 
-    /* MOBILE RESPONSIVE */
-
-    @media (max-width: 800px) {
       nav {
         min-height: 75px;
       }
 
       .logo {
-        font-size: 21px;
-        letter-spacing: 3px;
+        font-size: 17px;
+        letter-spacing: 2px;
+      }
+
+      .menu-toggle {
+        display: block;
       }
 
       .nav-links {
-        gap: 13px;
-        font-size: 11px;
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        right: 0;
+        padding: 25px 5%;
+        background: #10100f;
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+      }
+
+      .nav-links.open {
+        display: flex;
       }
 
       .nav-contact {
-        display: none;
+        text-align: center;
       }
 
       .hero {
-        min-height: 720px;
+        min-height: 750px;
         min-height: 100svh;
-        background-position: center;
       }
 
-      .hero-content {
-        padding-top: 100px;
+      .hero h1 {
+        font-size: clamp(49px, 13vw, 72px);
+      }
+
+      .hero-description {
+        font-size: 13px;
+      }
+
+      .hero-bottom {
+        bottom: 20px;
+        font-size: 8px;
+        letter-spacing: 1px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .stat-number {
+        font-size: 32px;
+      }
+
+      .properties-heading {
+        align-items: flex-start;
+        flex-direction: column;
       }
 
       .property-grid {
         grid-template-columns: 1fr;
-        max-width: 520px;
-        margin: auto;
       }
 
       .property-image {
-        height: 280px;
+        height: 250px;
       }
 
-      .about-grid {
+      .about-grid,
+      .contact-grid {
         grid-template-columns: 1fr;
-        gap: 35px;
       }
 
       .about-image {
-        height: 350px;
+        min-height: 350px;
       }
 
-      .service-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 480px) {
-      .container {
-        width: 91%;
+      .about-image-label {
+        right: 10px;
       }
 
-      nav {
-        gap: 8px;
-      }
-
-      .logo {
-        font-size: 18px;
-        letter-spacing: 2px;
-      }
-
-      .nav-links {
-        gap: 10px;
-        font-size: 10px;
-      }
-
-      .hero h1 {
-        font-size: 49px;
-      }
-
-      .hero p {
-        font-size: 13px;
-      }
-
-      section {
-        padding: 75px 0;
-      }
-
-      .stats-grid {
-        gap: 8px;
-      }
-
-      .stat strong {
-        font-size: 25px;
-      }
-
-      .stat span {
-        font-size: 10px;
-      }
-
-      .service-grid {
+      .services-grid {
         grid-template-columns: 1fr;
       }
 
       .service-card {
+        padding: 28px;
+      }
+
+      .contact-details {
         padding: 25px;
       }
 
@@ -611,460 +929,669 @@
         flex-direction: column;
         align-items: flex-start;
       }
-      /* ==================================
-   ROMAX PROPERTIES CINEMATIC INTRO
-================================== */
 
-#romax-intro {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100vh;
-  height: 100svh;
-  background: #080807;
-  z-index: 99999;
-  overflow: hidden;
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 1s ease, visibility 1s ease;
-}
+      .footer-links {
+        flex-wrap: wrap;
+      }
 
-#romax-intro.romax-finished {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
+      #romax-skip {
+        right: 16px;
+        bottom: 18px;
+      }
 
-#romax-opening,
-#romax-video-screen {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 1.2s ease;
-}
-
-#romax-opening {
-  z-index: 2;
-  background:
-    linear-gradient(rgba(0,0,0,.48), rgba(0,0,0,.65)),
-    url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=85")
-    center/cover no-repeat;
-}
-
-#romax-opening.romax-hide {
-  opacity: 0;
-  pointer-events: none;
-}
-
-#romax-video-screen {
-  z-index: 1;
-  background: #080807;
-}
-
-#romax-intro-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: .8;
-}
-
-.romax-intro-name,
-.romax-video-name {
-  position: absolute;
-  left: 20px;
-  right: 20px;
-  text-align: center;
-  color: #fff;
-  font-size: clamp(27px, 6vw, 66px);
-  font-weight: 800;
-  letter-spacing: clamp(3px, 1vw, 9px);
-  animation: romaxTitleIn 1.6s ease both;
-}
-
-.romax-intro-name span,
-.romax-video-name span {
-  color: #d8b56a;
-}
-
-.romax-intro-name p {
-  margin-top: 18px;
-  font-size: 10px;
-  letter-spacing: 5px;
-  font-weight: 400;
-}
-
-.romax-video-name {
-  top: 15%;
-  font-size: clamp(18px, 3vw, 34px);
-  pointer-events: none;
-}
-
-#romax-skip {
-  position: absolute;
-  z-index: 5;
-  bottom: 35px;
-  right: 30px;
-  padding: 13px 22px;
-  background: rgba(8,8,7,.6);
-  border: 1px solid #d8b56a;
-  color: #d8b56a;
-  font-size: 11px;
-  letter-spacing: 2px;
-  cursor: pointer;
-  transition: background .3s ease, color .3s ease;
-}
-
-#romax-skip:hover {
-  background: #d8b56a;
-  color: #080807;
-}
-
-@keyframes romaxTitleIn {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 600px) {
-  .romax-intro-name p {
-    font-size: 8px;
-    letter-spacing: 3px;
-  }
-
-  #romax-skip {
-    right: 18px;
-    bottom: 22px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .romax-intro-name,
-  .romax-video-name {
-    animation: none;
-  }
-
-  #romax-intro,
-  #romax-opening,
-  #romax-video-screen {
-    transition: none;
-  }
-}
+      .intro-tagline {
+        font-size: 8px;
+        letter-spacing: 3px;
+      }
     }
-  </style>
-</head>
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
     }
   </style>
 </head>
 
-<body>
+<body class="intro-active">
 
-<!-- ROMAX PROPERTIES CINEMATIC INTRO -->
-<div id="romax-intro">
+  <!-- ===================================
+       CINEMATIC INTRO
+  ==================================== -->
 
-  <!-- Opening Image -->
-  <div id="romax-opening">
-    <div class="romax-intro-name">
-      ROMAX <span>PROPERTIES</span>
-      <p>EXCEPTIONAL LIVING BEGINS HERE</p>
+  <div id="romax-intro" aria-label="ROMAX PROPERTIES introduction">
+
+    <div id="romax-opening" class="intro-screen">
+      <div class="intro-brand">
+        ROMAX <span>PROPERTIES</span>
+        <p class="intro-tagline">EXCEPTIONAL LIVING BEGINS HERE</p>
+      </div>
     </div>
+
+    <div id="romax-video-screen" class="intro-screen">
+      <video
+        id="romax-intro-video"
+        muted
+        playsinline
+        preload="metadata"
+        poster="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1800&q=85"
+      >
+        <source
+          src="17224730-hd_1920_1080_30fps.mp4"
+          type="video/mp4"
+        >
+      </video>
+
+      <div class="intro-video-shade"></div>
+
+      <div class="video-brand">
+        ROMAX <span>PROPERTIES</span>
+      </div>
+    </div>
+
+    <button id="romax-skip" type="button">
+      SKIP INTRO ↗
+    </button>
+
   </div>
 
-  <!-- Property Video -->
-  <div id="romax-video-screen">
-    <video id="romax-intro-video"
-           muted
-           playsinline
-           preload="metadata">
-      <source src="17224730-hd_1920_1080_30fps.mp4" type="video/mp4">
-    </video>
+  <!-- ===================================
+       WEBSITE HEADER
+  ==================================== -->
 
-    <div class="romax-video-name">
-      ROMAX <span>PROPERTIES</span>
-    </div>
-  </div>
-
-  <button id="romax-skip" type="button">SKIP INTRO ↗</button>
-
-</div>
-<body>
-
-  <!-- NAVIGATION -->
   <header>
     <nav class="container">
-      <a href="#home" class="logo">ROMAX<span>.</span></a>
 
-      <div class="nav-links">
+      <a href="#home" class="logo">
+        ROMAX <span>PROPERTIES</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menu-toggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+      <div class="nav-links" id="nav-links">
         <a href="#home">Home</a>
         <a href="#properties">Properties</a>
         <a href="#about">About</a>
         <a href="#services">Services</a>
+        <a href="#contact" class="nav-contact">Contact Us ↗</a>
       </div>
 
-      <a href="#contact" class="nav-contact">CONTACT US</a>
     </nav>
   </header>
 
-  <!-- HERO -->
   <main>
+
+    <!-- ===================================
+         HERO SECTION
+    ==================================== -->
+
     <section class="hero" id="home">
+
       <div class="container hero-content">
-        <div class="eyebrow">Luxury Real Estate</div>
 
-        <h1>Spaces<br>Worth <span>Living.</span></h1>
+        <div class="eyebrow">
+          Luxury Real Estate
+        </div>
 
-        <p>
-          Discover exceptional properties designed for modern living.
-          Explore inspiring homes and thoughtful real estate solutions
-          built around quality, comfort and timeless design.
+        <h1>
+          Spaces<br>
+          Worth <span>Living.</span>
+        </h1>
+
+        <p class="hero-description">
+          Discover a new standard of sophisticated living.
+          Explore elegant homes, thoughtful property development
+          and real estate services designed around your ambitions.
         </p>
 
-        <div class="buttons">
-          <a href="#properties" class="btn btn-gold">Explore Properties ↗</a>
-          <a href="#contact" class="btn btn-outline">Get In Touch</a>
+        <div class="hero-actions">
+          <a href="#properties" class="btn">
+            Explore Properties ↗
+          </a>
+
+          <a href="#about" class="btn btn-outline">
+            Discover Our Story
+          </a>
         </div>
+
+      </div>
+
+      <div class="hero-bottom">
+        <span>Designed for Better Living</span>
+        <span>Lagos, Nigeria</span>
+      </div>
+
+    </section>
+
+    <!-- ===================================
+         STATS
+    ==================================== -->
+
+    <section class="stats">
+      <div class="container stats-grid">
+
+        <div>
+          <div class="stat-number">Luxury</div>
+          <div class="stat-label">Living Experiences</div>
+        </div>
+
+        <div>
+          <div class="stat-number">Modern</div>
+          <div class="stat-label">Property Design</div>
+        </div>
+
+        <div>
+          <div class="stat-number">Personal</div>
+          <div class="stat-label">Client Attention</div>
+        </div>
+
       </div>
     </section>
 
-    <!-- STATS -->
-    <div class="stats">
-      <div class="container stats-grid">
-        <div class="stat">
-          <strong>500+</strong>
-          <span>Happy Clients</span>
-        </div>
+    <!-- ===================================
+         PROPERTIES
+    ==================================== -->
 
-        <div class="stat">
-          <strong>50+</strong>
-          <span>Premium Properties</span>
-        </div>
-
-        <div class="stat">
-          <strong>10+</strong>
-          <span>Years of Excellence</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- PROPERTIES -->
-    <section class="properties" id="properties">
+    <section class="section" id="properties">
       <div class="container">
-        <div class="section-heading">
-          <div class="eyebrow">Our Collection</div>
-          <h2>Featured Properties</h2>
-          <p>Explore premium spaces designed for modern living.</p>
+
+        <div class="properties-heading reveal">
+          <div>
+            <div class="eyebrow">Explore Our World</div>
+
+            <h2 class="section-heading">
+              Spaces That<br>
+              <span class="gold">Inspire.</span>
+            </h2>
+
+            <p class="section-description">
+              Discover architectural inspiration, elegant interiors
+              and modern spaces designed for contemporary living.
+            </p>
+          </div>
+
+          <a href="#contact" class="btn btn-outline">
+            Make an Enquiry ↗
+          </a>
         </div>
 
         <div class="property-grid">
 
-          <article class="property-card">
+          <article class="property-card reveal">
             <div class="property-image">
               <img
-                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85"
-                alt="Modern luxury residential interior"
+                src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=85"
+                alt="Modern luxury house surrounded by landscaping"
                 loading="lazy"
               >
-              <span class="badge">FOR SALE</span>
+              <span class="property-tag">Modern Living</span>
             </div>
 
             <div class="property-info">
-              <h3>Modern Luxury Residence</h3>
-              <p class="location">📍 Lagos, Nigeria</p>
-
-              <div class="property-bottom">
-                <strong>Luxury Home</strong>
-                <a href="#contact">View Details ↗</a>
+              <div class="property-location">
+                Residential Design
               </div>
+
+              <h3>Contemporary Homes</h3>
+
+              <p>
+                Explore modern architecture, generous spaces
+                and a refined approach to residential living.
+              </p>
+
+              <a href="#contact" class="property-link">
+                Enquire Now ↗
+              </a>
             </div>
           </article>
 
-          <article class="property-card">
+          <article class="property-card reveal">
             <div class="property-image">
               <img
-                src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85"
-                alt="Contemporary villa interior"
+                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85"
+                alt="Elegant contemporary home interior"
                 loading="lazy"
               >
-              <span class="badge">FEATURED</span>
+              <span class="property-tag">Elegant Interiors</span>
             </div>
 
             <div class="property-info">
-              <h3>Contemporary Villa</h3>
-              <p class="location">📍 Chevron, Lagos</p>
-
-              <div class="property-bottom">
-                <strong>Premium Villa</strong>
-                <a href="#contact">View Details ↗</a>
+              <div class="property-location">
+                Interior Inspiration
               </div>
+
+              <h3>Refined Interiors</h3>
+
+              <p>
+                Experience stylish interiors with carefully
+                considered finishes and welcoming spaces.
+              </p>
+
+              <a href="#contact" class="property-link">
+                Enquire Now ↗
+              </a>
             </div>
           </article>
 
-          <article class="property-card">
+          <article class="property-card reveal">
             <div class="property-image">
               <img
-                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85"
-                alt="Elegant modern family home"
+                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85"
+                alt="Modern property with spacious architectural design"
                 loading="lazy"
               >
-              <span class="badge">NEW</span>
+              <span class="property-tag">Premium Design</span>
             </div>
 
             <div class="property-info">
-              <h3>Elegant Family Home</h3>
-              <p class="location">📍 Lekki, Lagos</p>
-
-              <div class="property-bottom">
-                <strong>Residential</strong>
-                <a href="#contact">View Details ↗</a>
+              <div class="property-location">
+                Luxury Architecture
               </div>
+
+              <h3>Exceptional Spaces</h3>
+
+              <p>
+                Find inspiration in beautiful architecture
+                created to balance comfort and contemporary style.
+              </p>
+
+              <a href="#contact" class="property-link">
+                Enquire Now ↗
+              </a>
             </div>
           </article>
 
         </div>
 
         <p class="demo-note">
-          Demonstration website. Property images are illustrative and do not
-          confirm actual Romax Properties listings.
+          Demo website: photographs are illustrative and do not
+          represent verified Romax Properties listings.
+          Property availability and specifications must be confirmed.
         </p>
+
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about">
+    <!-- ===================================
+         ABOUT
+    ==================================== -->
+
+    <section class="section about" id="about">
       <div class="container about-grid">
 
-        <div class="about-image">
+        <div class="about-image reveal">
           <img
-            src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=85"
-            alt="Modern architectural interior"
+            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85"
+            alt="Luxury living room with sophisticated interior design"
             loading="lazy"
           >
+
+          <div class="about-image-label">
+            A Better Way to Live
+          </div>
         </div>
 
-        <div class="about-copy">
-          <div class="eyebrow">A Better Way to Live</div>
+        <div class="about-content reveal">
+          <div class="eyebrow">About Romax</div>
 
-          <h2>Thoughtful Spaces.<br>Lasting Value.</h2>
+          <h2 class="section-heading">
+            More Than<br>
+            <span class="gold">A Property.</span>
+          </h2>
 
-          <div class="gold-line"></div>
-
-          <p>
-            Great spaces are about more than buildings. They are about
-            comfort, thoughtful design, and the everyday experiences
-            that make a place feel like home.
+          <p class="section-description">
+            ROMAX PROPERTIES is presented here through a modern,
+            premium real estate website concept. The design
+            highlights elegant living, thoughtful architecture
+            and a client-focused property experience.
           </p>
 
-          <p>
-            This demonstration website presents a premium digital concept
-            for real estate development, luxury homes, and property
-            management in Lagos.
-          </p>
+          <ul class="about-list">
+            <li>Residential property development</li>
+            <li>Luxury home inspiration</li>
+            <li>Property management services</li>
+            <li>Modern architectural concepts</li>
+          </ul>
 
-          <a href="#services" class="btn btn-gold">Discover Our Services ↗</a>
+          <a href="#services" class="btn">
+            Explore Our Services ↗
+          </a>
         </div>
 
       </div>
     </section>
 
-    <!-- SERVICES -->
-    <section class="services" id="services">
+    <!-- ===================================
+         SERVICES
+    ==================================== -->
+
+    <section class="section" id="services">
       <div class="container">
 
-        <div class="section-heading">
-          <div class="eyebrow">What We Do</div>
-          <h2>Our Expertise.</h2>
-          <p>Real estate solutions for modern property needs.</p>
+        <div class="services-heading reveal">
+          <div class="eyebrow">What We Offer</div>
+
+          <h2 class="section-heading">
+            Real Estate,<br>
+            <span class="gold">Reimagined.</span>
+          </h2>
+
+          <p class="section-description">
+            Explore the key service areas featured in this
+            ROMAX PROPERTIES website concept.
+          </p>
         </div>
 
-        <div class="service-grid">
+        <div class="services-grid">
 
-          <article class="service-card">
-            <div class="service-number">01</div>
+          <article class="service-card reveal">
+            <span class="service-number">01</span>
             <h3>Estate Development</h3>
-            <p>Thoughtfully planned residential communities for modern lifestyles.</p>
+            <p>
+              Property development concepts focused on modern
+              design and residential environments.
+            </p>
           </article>
 
-          <article class="service-card">
-            <div class="service-number">02</div>
+          <article class="service-card reveal">
+            <span class="service-number">02</span>
             <h3>Luxury Homes</h3>
-            <p>Elegant homes combining comfort, architecture and contemporary design.</p>
+            <p>
+              Discover inspiration for sophisticated homes
+              and contemporary living spaces.
+            </p>
           </article>
 
-          <article class="service-card">
-            <div class="service-number">03</div>
+          <article class="service-card reveal">
+            <span class="service-number">03</span>
             <h3>Property Management</h3>
-            <p>Professional property care and management solutions.</p>
+            <p>
+              Explore property management services and
+              professional real estate support.
+            </p>
           </article>
 
-          <article class="service-card">
-            <div class="service-number">04</div>
+          <article class="service-card reveal">
+            <span class="service-number">04</span>
             <h3>New Construction</h3>
-            <p>Construction concepts focused on quality and attention to detail.</p>
+            <p>
+              Modern architectural ideas for new residential
+              construction and building projects.
+            </p>
           </article>
 
-          <article class="service-card">
-            <div class="service-number">05</div>
-            <h3>Real Estate Development</h3>
-            <p>Property development concepts designed for long-term value.</p>
+          <article class="service-card reveal">
+            <span class="service-number">05</span>
+            <h3>Residential Buildings</h3>
+            <p>
+              Residential design concepts with a focus
+              on comfort, space and functionality.
+            </p>
           </article>
 
-          <article class="service-card">
-            <div class="service-number">06</div>
-            <h3>Management Services</h3>
-            <p>Organised support for property owners and residential communities.</p>
+          <article class="service-card reveal">
+            <span class="service-number">06</span>
+            <h3>Real Estate Services</h3>
+            <p>
+              Contact the business to confirm its current
+              services, properties and available opportunities.
+            </p>
           </article>
 
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section class="contact" id="contact">
-      <div class="container">
-        <div class="eyebrow">Your Next Chapter Starts Here</div>
+    <!-- ===================================
+         CONTACT
+    ==================================== -->
 
-        <h2>Let's Find Your<br>Next Property.</h2>
+    <section class="section contact" id="contact">
+      <div class="container contact-grid">
 
-        <p>
-          Interested in learning more? Contact Romax Properties by phone.
-        </p>
+        <div class="reveal">
+          <div class="eyebrow">Let's Connect</div>
 
-        <a href="tel:+2347019673310" class="btn btn-gold">
-          📞 Call Romax Properties
-        </a>
+          <h2 class="section-heading">
+            Your Next Chapter<br>
+            Starts <span class="gold">Here.</span>
+          </h2>
 
-        <p style="margin-top: 20px; font-size: 11px;">
-          Please verify the contact number with the business before
-          publishing this demonstration as an official website.
-        </p>
+          <p class="section-description">
+            Interested in learning more about ROMAX PROPERTIES?
+            Get in touch to discuss property enquiries and
+            available real estate services.
+          </p>
+
+          <a
+            class="btn"
+            href="https://wa.me/2347019673310"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Chat on WhatsApp ↗
+          </a>
+        </div>
+
+        <div class="contact-details reveal">
+
+          <div class="contact-item">
+            <span class="contact-label">Business</span>
+            <div class="contact-value">
+              ROMAX PROPERTIES
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-label">Phone / WhatsApp</span>
+            <a
+              class="contact-value"
+              href="tel:+2347019673310"
+            >
+              +234 701 967 3310
+            </a>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-label">Location</span>
+            <div class="contact-value">
+              Chevron, 45A Alternative Route,
+              Eti-Osa, Lagos, Nigeria
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-label">Enquiries</span>
+            <a class="contact-value" href="#contact">
+              Contact the business to confirm availability
+            </a>
+          </div>
+
+        </div>
+
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
+  <!-- ===================================
+       FOOTER
+  ==================================== -->
+
   <footer>
     <div class="container footer-content">
-      <a href="#home" class="logo">ROMAX<span>.</span></a>
 
-      <p>Chevron, 45A Alternative Route, Eti-Osa, Lagos.</p>
+      <a href="#home" class="logo">
+        ROMAX <span>PROPERTIES</span>
+      </a>
 
-      <p>© 2026 Romax Properties — Demo Website</p>
+      <p class="footer-copy">
+        © <span id="current-year"></span>
+        ROMAX PROPERTIES. Website demonstration.
+      </p>
+
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#properties">Properties</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+
     </div>
   </footer>
 
-  <!-- FLOATING CALL BUTTON -->
-  <a href="tel:+2347019673310" class="call-button">
-    📞 Call Romax
-  </a>
+  <!-- ===================================
+       JAVASCRIPT
+  ==================================== -->
+
+  <script>
+    (function () {
+      const intro = document.getElementById("romax-intro");
+      const opening = document.getElementById("romax-opening");
+      const video = document.getElementById("romax-intro-video");
+      const skip = document.getElementById("romax-skip");
+      const body = document.body;
+
+      let finished = false;
+      let startTimer;
+      let endTimer;
+      let removeTimer;
+
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      function finishIntro() {
+        if (finished) return;
+
+        finished = true;
+
+        clearTimeout(startTimer);
+        clearTimeout(endTimer);
+        clearTimeout(removeTimer);
+
+        video.pause();
+
+        intro.classList.add("finished");
+        body.classList.remove("intro-active");
+
+        removeTimer = setTimeout(function () {
+          intro.remove();
+        }, 1100);
+      }
+
+      skip.addEventListener("click", finishIntro);
+
+      video.addEventListener("ended", finishIntro);
+
+      video.addEventListener("error", function () {
+        finishIntro();
+      });
+
+      video.addEventListener("playing", function () {
+        clearTimeout(endTimer);
+
+        // Allow a maximum of 7 seconds of video playback.
+        endTimer = setTimeout(finishIntro, 7000);
+      });
+
+      if (reduceMotion) {
+        finishIntro();
+      } else {
+        startTimer = setTimeout(function () {
+          if (finished) return;
+
+          opening.classList.add("hide");
+
+          const playRequest = video.play();
+
+          if (playRequest && typeof playRequest.catch === "function") {
+            playRequest.catch(function () {
+              finishIntro();
+            });
+          }
+        }, 2200);
+
+        // Fallback if the video never starts or stalls.
+        endTimer = setTimeout(finishIntro, 10000);
+      }
+
+      // Mobile navigation menu.
+      const menuToggle = document.getElementById("menu-toggle");
+      const navLinks = document.getElementById("nav-links");
+
+      menuToggle.addEventListener("click", function () {
+        const isOpen = navLinks.classList.toggle("open");
+
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen ? "Close navigation menu" : "Open navigation menu"
+        );
+
+        menuToggle.textContent = isOpen ? "✕" : "☰";
+      });
+
+      navLinks.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          navLinks.classList.remove("open");
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.setAttribute("aria-label", "Open navigation menu");
+          menuToggle.textContent = "☰";
+        });
+      });
+
+      // Reveal sections as the visitor scrolls.
+      const revealElements = document.querySelectorAll(".reveal");
+
+      if ("IntersectionObserver" in window && !reduceMotion) {
+        const observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12 }
+        );
+
+        revealElements.forEach(function (element) {
+          observer.observe(element);
+        });
+      } else {
+        revealElements.forEach(function (element) {
+          element.classList.add("visible");
+        });
+      }
+
+      // Automatically update the footer year.
+      document.getElementById("current-year").textContent =
+        new Date().getFullYear();
+
+    })();
+  </script>
 
 </body>
-</html>
+  </html> 
